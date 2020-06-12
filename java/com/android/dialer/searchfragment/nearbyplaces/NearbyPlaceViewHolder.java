@@ -44,6 +44,7 @@ public final class NearbyPlaceViewHolder extends RecyclerView.ViewHolder
   private final RowClickListener listener;
 
   private String number;
+  private String lookupKey;
   private int position;
 
   public NearbyPlaceViewHolder(View view, RowClickListener listener) {
@@ -62,6 +63,7 @@ public final class NearbyPlaceViewHolder extends RecyclerView.ViewHolder
    */
   public void bind(SearchCursor cursor, String query) {
     number = cursor.getString(Projections.PHONE_NUMBER);
+    lookupKey = cursor.getString(Projections.LOOKUP_KEY);
     position = cursor.getPosition();
     String name = cursor.getString(Projections.DISPLAY_NAME);
     String address = cursor.getString(Projections.PHONE_LABEL);
@@ -95,6 +97,6 @@ public final class NearbyPlaceViewHolder extends RecyclerView.ViewHolder
 
   @Override
   public void onClick(View v) {
-    listener.placeVoiceCall(number, position);
+    listener.placeVoiceCall(number, lookupKey, position);
   }
 }

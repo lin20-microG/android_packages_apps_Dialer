@@ -100,9 +100,9 @@ public class ContextMenu extends PopupMenu implements OnMenuItemClickListener {
   @Override
   public boolean onMenuItemClick(MenuItem menuItem) {
     if (menuItem.getItemId() == R.id.voice_call_container) {
-      listener.placeCall(Assert.isNotNull(voiceChannel));
+      listener.placeCall(Assert.isNotNull(voiceChannel), speedDialUiItem.lookupKey());
     } else if (menuItem.getItemId() == R.id.video_call_container) {
-      listener.placeCall(Assert.isNotNull(videoChannel));
+      listener.placeCall(Assert.isNotNull(videoChannel), speedDialUiItem.lookupKey());
     } else if (menuItem.getItemId() == R.id.send_message_container) {
       listener.openSmsConversation(voiceChannel.number());
     } else if (menuItem.getItemId() == R.id.remove_container) {
@@ -125,7 +125,7 @@ public class ContextMenu extends PopupMenu implements OnMenuItemClickListener {
   public interface ContextMenuItemListener {
 
     /** Called when the user selects "voice call" or "video call" option from the context menu. */
-    void placeCall(Channel channel);
+    void placeCall(Channel channel, String lookupKey);
 
     /** Called when the user selects "send message" from the context menu. */
     void openSmsConversation(String number);

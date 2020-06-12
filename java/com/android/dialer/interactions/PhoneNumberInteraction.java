@@ -100,6 +100,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
         Phone.LABEL,
         Phone.MIMETYPE,
         Phone.CONTACT_ID,
+        Phone.LOOKUP_KEY
       };
 
   private static final String PHONE_NUMBER_SELECTION =
@@ -113,7 +114,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
           + Data.DATA1
           + " NOT NULL";
   private static final int UNKNOWN_CONTACT_ID = -1;
-  private final Context context;
+  private final Activity context;
   private final int interactionType;
   private final CallSpecificAppData callSpecificAppData;
   private long contactId = UNKNOWN_CONTACT_ID;
@@ -157,7 +158,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
   }
 
   private PhoneNumberInteraction(
-      Context context,
+      Activity context,
       int interactionType,
       boolean isVideoCall,
       CallSpecificAppData callSpecificAppData) {
@@ -172,24 +173,25 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
   }
 
   private static void performAction(
-      Context context,
+      Activity context,
       String phoneNumber,
       int interactionType,
       boolean isVideoCall,
-      CallSpecificAppData callSpecificAppData) {
+      CallSpecificAppData callSpecificAppData,
+      String lookupKey) {
     Intent intent;
     switch (interactionType) {
       case ContactDisplayUtils.INTERACTION_SMS:
         intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("sms", phoneNumber, null));
         break;
       default:
-        intent =
-            PreCall.getIntent(
-                context,
+            PreCall.start(
+                context, phoneNumber,
                 new CallIntentBuilder(phoneNumber, callSpecificAppData)
                     .setIsVideoCall(isVideoCall)
-                    .setAllowAssistedDial(callSpecificAppData.getAllowAssistedDialing()));
-        break;
+                    .setAllowAssistedDial(callSpecificAppData.getAllowAssistedDialing()),
+                        lookupKey);
+        return;
     }
     DialerUtils.startActivityWithErrorToast(context, intent);
   }
@@ -211,9 +213,9 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
         .startInteraction(uri);
   }
 
-  private void performAction(String phoneNumber) {
+  private void performAction(String phoneNumber, String lookupKey) {
     PhoneNumberInteraction.performAction(
-        context, phoneNumber, interactionType, isVideoCall, callSpecificAppData);
+        context, phoneNumber, interactionType, isVideoCall, callSpecificAppData, lookupKey);
   }
 
   /**
@@ -284,6 +286,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
         interactionError(InteractionErrorCode.USER_LEAVING_ACTIVITY);
         return;
       }
+      String lookupKey;
       if (cursor.moveToFirst()) {
         int contactIdColumn = cursor.getColumnIndexOrThrow(Phone.CONTACT_ID);
         int isSuperPrimaryColumn = cursor.getColumnIndexOrThrow(Phone.IS_SUPER_PRIMARY);
@@ -294,6 +297,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
         int phoneTypeColumn = cursor.getColumnIndexOrThrow(Phone.TYPE);
         int phoneLabelColumn = cursor.getColumnIndexOrThrow(Phone.LABEL);
         int phoneMimeTpeColumn = cursor.getColumnIndexOrThrow(Phone.MIMETYPE);
+        int phoneLookupKeyColumn = cursor.getColumnIndexOrThrow(Phone.LOOKUP_KEY);
         do {
           if (contactId == UNKNOWN_CONTACT_ID) {
             contactId = cursor.getLong(contactIdColumn);
@@ -303,6 +307,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
             // Found super primary, call it.
             primaryPhone = cursor.getString(phoneNumberColumn);
           }
+          lookupKey = cursor.getString(phoneLookupKeyColumn);
 
           PhoneItem item = new PhoneItem();
           item.id = cursor.getLong(phoneIdColumn);
@@ -321,7 +326,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
       }
 
       if (primaryPhone != null) {
-        performAction(primaryPhone);
+        performAction(primaryPhone, lookupKey);
         return;
       }
 
@@ -330,10 +335,10 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
         interactionError(InteractionErrorCode.CONTACT_HAS_NO_NUMBER);
       } else if (phoneList.size() == 1) {
         PhoneItem item = phoneList.get(0);
-        performAction(item.phoneNumber);
+        performAction(item.phoneNumber, lookupKey);
       } else {
         // There are multiple candidates. Let the user choose one.
-        showDisambiguationDialog(phoneList);
+        showDisambiguationDialog(phoneList, lookupKey);
       }
     } finally {
       cursor.close();
@@ -355,7 +360,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
     return loader;
   }
 
-  private void showDisambiguationDialog(ArrayList<PhoneItem> phoneList) {
+  private void showDisambiguationDialog(ArrayList<PhoneItem> phoneList, String lookupKey) {
     // TODO(a bug): don't leak the activity
     final Activity activity = (Activity) context;
     if (activity.isFinishing()) {
@@ -375,7 +380,8 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
           phoneList,
           interactionType,
           isVideoCall,
-          callSpecificAppData);
+          callSpecificAppData,
+          lookupKey);
     } catch (IllegalStateException e) {
       // ignore to be safe. Shouldn't happen because we checked the
       // activity wasn't destroyed, but to be safe.
@@ -497,12 +503,14 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
     private static final String ARG_PHONE_LIST = "phoneList";
     private static final String ARG_INTERACTION_TYPE = "interactionType";
     private static final String ARG_IS_VIDEO_CALL = "is_video_call";
+    private static final String ARG_LOOKUP_KEY = "lookupKey";
 
     private int interactionType;
     private ListAdapter phonesAdapter;
     private List<PhoneItem> phoneList;
     private CallSpecificAppData callSpecificAppData;
     private boolean isVideoCall;
+    private String lookupKey;
 
     public PhoneDisambiguationDialogFragment() {
       super();
@@ -513,12 +521,14 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
         ArrayList<PhoneItem> phoneList,
         int interactionType,
         boolean isVideoCall,
-        CallSpecificAppData callSpecificAppData) {
+        CallSpecificAppData callSpecificAppData,
+        String lookupKey) {
       PhoneDisambiguationDialogFragment fragment = new PhoneDisambiguationDialogFragment();
       Bundle bundle = new Bundle();
       bundle.putParcelableArrayList(ARG_PHONE_LIST, phoneList);
       bundle.putInt(ARG_INTERACTION_TYPE, interactionType);
       bundle.putBoolean(ARG_IS_VIDEO_CALL, isVideoCall);
+      bundle.putString(ARG_LOOKUP_KEY, lookupKey);
       CallIntentParser.putCallSpecificAppData(bundle, callSpecificAppData);
       fragment.setArguments(bundle);
       fragment.show(fragmentManager, TAG);
@@ -532,6 +542,7 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
       phoneList = getArguments().getParcelableArrayList(ARG_PHONE_LIST);
       interactionType = getArguments().getInt(ARG_INTERACTION_TYPE);
       isVideoCall = getArguments().getBoolean(ARG_IS_VIDEO_CALL);
+      lookupKey = getArguments().getString(ARG_LOOKUP_KEY);
       callSpecificAppData = CallIntentParser.getCallSpecificAppData(getArguments());
 
       phonesAdapter = new PhoneItemAdapter(activity, phoneList, interactionType);
@@ -571,8 +582,8 @@ public class PhoneNumberInteraction implements OnLoadCompleteListener<Cursor> {
           activity.startService(serviceIntent);
         }
 
-        PhoneNumberInteraction.performAction(
-            activity, phoneItem.phoneNumber, interactionType, isVideoCall, callSpecificAppData);
+        PhoneNumberInteraction.performAction(activity, phoneItem.phoneNumber, interactionType,
+            isVideoCall, callSpecificAppData, lookupKey);
       } else {
         dialog.dismiss();
       }

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2020 The Calyx Institute
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -14,6 +15,7 @@
 
 package com.android.dialer.phonenumbercache;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,6 +25,7 @@ import android.provider.CallLog.Calls;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
+import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.Directory;
 import android.provider.ContactsContract.DisplayNameSources;
 import android.provider.ContactsContract.PhoneLookup;
@@ -35,6 +38,7 @@ import com.android.contacts.common.ContactsUtils.UserType;
 import com.android.contacts.common.util.Constants;
 import com.android.dialer.common.Assert;
 import com.android.dialer.common.LogUtil;
+import com.android.dialer.common.accounts.CallAccountIds;
 import com.android.dialer.logging.ContactSource;
 import com.android.dialer.oem.CequintCallerIdManager;
 import com.android.dialer.oem.CequintCallerIdManager.CequintCallerIdContact;
@@ -47,6 +51,11 @@ import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.android.dialer.common.accounts.SpecialCallingAccounts.ACCOUNTS_PROJECTION;
+import static com.android.dialer.common.accounts.SpecialCallingAccounts.ACCOUNTS_SELECTION;
+import static com.android.dialer.common.accounts.SpecialCallingAccounts.MIME_TYPE_SIGNAL;
+import static com.android.dialer.common.accounts.SpecialCallingAccounts.MIME_TYPE_WHATSAPP;
 
 /** Utility class to look up the contact information for a given number. */
 public class ContactInfoHelper {
@@ -349,6 +358,7 @@ public class ContactInfoHelper {
       String lookupKey = phoneLookupCursor.getString(PhoneQuery.LOOKUP_KEY);
       ContactInfo contactInfo = createPhoneLookupContactInfo(phoneLookupCursor, lookupKey);
       fillAdditionalContactInfo(context, contactInfo);
+      fillCalyxContactInfo(context, contactInfo);
       return contactInfo;
     }
   }
@@ -389,6 +399,23 @@ public class ContactInfoHelper {
           cursor.getString(PhoneQuery.ADDITIONAL_CONTACT_INFO_DISPLAY_NAME_ALTERNATIVE);
       contactInfo.carrierPresence =
           cursor.getInt(PhoneQuery.ADDITIONAL_CONTACT_INFO_CARRIER_PRESENCE);
+    }
+  }
+
+  private void fillCalyxContactInfo(Context context, ContactInfo contactInfo) {
+    if (contactInfo.lookupKey == null) {
+      return;
+    }
+    String number = contactInfo.normalizedNumber == null
+        ? contactInfo.number : contactInfo.normalizedNumber;
+    ContentResolver cr = context.getContentResolver();
+    String[] args = new String[]{contactInfo.lookupKey, MIME_TYPE_SIGNAL, MIME_TYPE_WHATSAPP};
+    try (Cursor c = cr.query(Data.CONTENT_URI, ACCOUNTS_PROJECTION, ACCOUNTS_SELECTION, args,
+        null)) {
+      if (c == null) return;
+      CallAccountIds ids = CallAccountIds.fromCursor(c, number);
+      contactInfo.signalId = ids.signalId;
+      contactInfo.whatsAppId = ids.whatsappId;
     }
   }
 

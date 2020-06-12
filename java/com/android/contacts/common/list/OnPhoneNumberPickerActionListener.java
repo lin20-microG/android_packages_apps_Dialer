@@ -29,8 +29,8 @@ public interface OnPhoneNumberPickerActionListener {
    * Returns the specified phone number to the requester. May call the specified phone number,
    * either as an audio or video call.
    */
-  void onPickPhoneNumber(
-      String phoneNumber, boolean isVideoCall, CallSpecificAppData callSpecificAppData);
+  void onPickPhoneNumber(String phoneNumber, boolean isVideoCall,
+      CallSpecificAppData callSpecificAppData, String lookupKey);
 
   /** Called when home menu in {@link ActionBar} is clicked by the user. */
   void onHomeInActionBarSelected();

@@ -64,6 +64,7 @@ public abstract class PhoneFavoriteTileView extends ContactTileView {
   private View shadowOverlay;
   /** Users' most frequent phone number. */
   private String phoneNumberString;
+  private String lookupKey;
 
   private boolean isPinned;
   private boolean isStarred;
@@ -99,6 +100,7 @@ public abstract class PhoneFavoriteTileView extends ContactTileView {
       sendViewNotification(getContext(), entry.lookupUri);
       // Grab the phone-number to call directly. See {@link onClick()}.
       phoneNumberString = entry.phoneNumber;
+      lookupKey = entry.lookupKey;
 
       // If this is a blank entry, don't show anything. For this to truly look like an empty row
       // the entire ContactTileRow needs to be hidden.
@@ -155,7 +157,7 @@ public abstract class PhoneFavoriteTileView extends ContactTileView {
           // call them at the number that you usually talk to them
           // at (i.e. the one displayed in the UI), regardless of
           // whether that's their default number.
-          mListener.onCallNumberDirectly(phoneNumberString, callSpecificAppData.build());
+          mListener.onCallNumberDirectly(phoneNumberString, callSpecificAppData.build(), lookupKey);
         }
       }
     };

@@ -91,6 +91,7 @@ import com.android.dialer.callintent.CallSpecificAppData;
 import com.android.dialer.common.Assert;
 import com.android.dialer.common.LogUtil;
 import com.android.dialer.common.UiUtil;
+import com.android.dialer.common.accounts.SelectAccountDialogFragment;
 import com.android.dialer.common.concurrent.DialerExecutorComponent;
 import com.android.dialer.common.concurrent.ThreadUtil;
 import com.android.dialer.configprovider.ConfigProviderComponent;
@@ -1407,18 +1408,18 @@ public class DialtactsActivity extends TransactionSafeActivity
   }
 
   @Override
-  public void onPickPhoneNumber(
-      String phoneNumber, boolean isVideoCall, CallSpecificAppData callSpecificAppData) {
+  public void onPickPhoneNumber(String phoneNumber, boolean isVideoCall,
+      CallSpecificAppData callSpecificAppData, String lookupKey) {
     if (phoneNumber == null) {
       // Invalid phone number, but let the call go through so that InCallUI can show
       // an error message.
       phoneNumber = "";
     }
     PreCall.start(
-        this,
+        this, phoneNumber,
         new CallIntentBuilder(phoneNumber, callSpecificAppData)
             .setIsVideoCall(isVideoCall)
-            .setAllowAssistedDial(callSpecificAppData.getAllowAssistedDialing()));
+            .setAllowAssistedDial(callSpecificAppData.getAllowAssistedDialing()), lookupKey);
 
     clearSearchOnPause = true;
   }

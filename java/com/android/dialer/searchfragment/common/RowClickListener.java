@@ -26,7 +26,7 @@ public interface RowClickListener {
    *
    * @param ranking position in the list relative to the other elements
    */
-  void placeVoiceCall(String phoneNumber, int ranking);
+  void placeVoiceCall(String phoneNumber, String lookupKey, int ranking);
 
   /**
    * Places an IMS video call.

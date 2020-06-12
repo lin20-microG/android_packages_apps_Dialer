@@ -77,7 +77,7 @@ public class SuggestionViewHolder extends RecyclerView.ViewHolder implements OnC
     if (v.getId() == R.id.overflow) {
       listener.onOverFlowMenuClicked(speedDialUiItem, getHeaderInfo());
     } else {
-      listener.onRowClicked(speedDialUiItem.defaultChannel());
+      listener.onRowClicked(speedDialUiItem.defaultChannel(), speedDialUiItem.lookupKey());
     }
   }
 
@@ -96,6 +96,6 @@ public class SuggestionViewHolder extends RecyclerView.ViewHolder implements OnC
         SpeedDialUiItem speedDialUiItem, HistoryItemBottomSheetHeaderInfo headerInfo);
 
     /** Called when a suggested contact is clicked. */
-    void onRowClicked(Channel channel);
+    void onRowClicked(Channel channel, String lookupKey);
   }
 }

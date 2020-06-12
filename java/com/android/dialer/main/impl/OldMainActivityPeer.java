@@ -78,6 +78,7 @@ import com.android.dialer.calllog.config.CallLogConfigComponent;
 import com.android.dialer.calllog.ui.NewCallLogFragment;
 import com.android.dialer.common.FragmentUtils.FragmentUtilListener;
 import com.android.dialer.common.LogUtil;
+import com.android.dialer.common.accounts.SelectAccountDialogFragment;
 import com.android.dialer.common.concurrent.DefaultFutureCallback;
 import com.android.dialer.common.concurrent.DialerExecutorComponent;
 import com.android.dialer.common.concurrent.ThreadUtil;
@@ -1143,18 +1144,18 @@ public class OldMainActivityPeer implements MainActivityPeer, FragmentUtilListen
     }
 
     @Override
-    public void onPickPhoneNumber(
-        String phoneNumber, boolean isVideoCall, CallSpecificAppData callSpecificAppData) {
+    public void onPickPhoneNumber(String phoneNumber, boolean isVideoCall,
+        CallSpecificAppData callSpecificAppData, String lookupKey) {
       if (phoneNumber == null) {
         // Invalid phone number, but let the call go through so that InCallUI can show
         // an error message.
         phoneNumber = "";
       }
       PreCall.start(
-          activity,
+          activity, phoneNumber,
           new CallIntentBuilder(phoneNumber, callSpecificAppData)
               .setIsVideoCall(isVideoCall)
-              .setAllowAssistedDial(callSpecificAppData.getAllowAssistedDialing()));
+              .setAllowAssistedDial(callSpecificAppData.getAllowAssistedDialing()), lookupKey);
     }
 
     @Override

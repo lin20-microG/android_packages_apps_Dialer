@@ -176,6 +176,7 @@ public abstract class ContactTileView extends FrameLayout {
         Uri contactLookupUri, Rect viewRect, CallSpecificAppData callSpecificAppData);
 
     /** Notification that the specified number is to be called. */
-    void onCallNumberDirectly(String phoneNumber, CallSpecificAppData callSpecificAppData);
+    void onCallNumberDirectly(String phoneNumber, CallSpecificAppData callSpecificAppData,
+        String lookupKey);
   }
 }

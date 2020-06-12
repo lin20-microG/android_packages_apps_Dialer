@@ -15,4 +15,13 @@
      limitations under the License.
 -->
 <resources>
+  <string name="call_account_choose_title">Choose a provider for this call</string>
+  <string name="call_account_signal" translatable="false">Signal</string>
+  <string name="call_account_whatsapp" translatable="false">WhatsApp</string>
+  <string name="call_account_unknown">Unknown</string>
+  <string name="call_account_private">Audio and video are private</string>
+  <string name="call_account_not_private">Audio is not private</string>
+  <string name="call_account_unavailable">Unavailable for this number</string>
+  <string name="call_account_offline">No internet connection</string>
+  <string name="call_account_not_installed">Not installed - Tap to install</string>
 </resources>

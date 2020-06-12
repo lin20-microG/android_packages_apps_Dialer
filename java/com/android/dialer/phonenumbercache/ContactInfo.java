@@ -69,6 +69,9 @@ public class ContactInfo {
   /** @see android.provider.ContactsContract.CommonDataKinds.Phone#CARRIER_PRESENCE */
   public int carrierPresence;
 
+  public long signalId = -1;
+  public long whatsAppId = -1;
+
   @Override
   public int hashCode() {
     // Uses only name and contactUri to determine hashcode.

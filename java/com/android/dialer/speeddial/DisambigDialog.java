@@ -18,6 +18,7 @@ package com.android.dialer.speeddial;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
 import android.support.annotation.WorkerThread;
@@ -37,6 +38,7 @@ import com.android.dialer.callintent.CallInitiationType;
 import com.android.dialer.callintent.CallIntentBuilder;
 import com.android.dialer.common.Assert;
 import com.android.dialer.common.LogUtil;
+import com.android.dialer.common.accounts.SelectAccountDialogFragment;
 import com.android.dialer.common.concurrent.DefaultFutureCallback;
 import com.android.dialer.common.concurrent.DialerExecutorComponent;
 import com.android.dialer.logging.DialerImpression;
@@ -200,9 +202,9 @@ public class DisambigDialog extends DialogFragment {
     }
 
     PreCall.start(
-        getContext(),
+        getActivity(), channel.number(),
         new CallIntentBuilder(channel.number(), CallInitiationType.Type.SPEED_DIAL_DISAMBIG_DIALOG)
-            .setAllowAssistedDial(true));
+            .setAllowAssistedDial(true), speedDialUiItem.lookupKey());
     dismiss();
   }
 

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2020 The Calyx Institute
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +17,15 @@
 
 package com.android.dialer.precall;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.android.dialer.callintent.CallIntentBuilder;
+import com.android.dialer.common.accounts.SelectAccountDialogFragment;
+import com.android.dialer.common.accounts.SpecialCallingAccounts;
 import com.android.dialer.util.DialerUtils;
 
 /** Interface to prepare a {@link CallIntentBuilder} before placing the call with telecom. */
@@ -42,4 +47,16 @@ public interface PreCall {
   static void start(Context context, CallIntentBuilder builder) {
     DialerUtils.startActivityWithErrorToast(context, getIntent(context, builder));
   }
+
+  static void start(Activity activity, String phoneNumber, CallIntentBuilder builder,
+      @Nullable String lookupKey) {
+    if (SpecialCallingAccounts.showDialog(phoneNumber, builder) && lookupKey != null) {
+      Intent intent = builder.build();
+      SelectAccountDialogFragment.newInstance(intent, lookupKey, phoneNumber)
+          .show(activity.getFragmentManager(), "SELECT_ACCOUNT");
+    } else {
+      start(activity, builder);
+    }
+  }
+
 }

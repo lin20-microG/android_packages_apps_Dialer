@@ -50,6 +50,7 @@ import com.android.dialer.callintent.CallSpecificAppData;
 import com.android.dialer.common.Assert;
 import com.android.dialer.common.FragmentUtils;
 import com.android.dialer.common.LogUtil;
+import com.android.dialer.common.accounts.SelectAccountDialogFragment;
 import com.android.dialer.common.concurrent.ThreadUtil;
 import com.android.dialer.dialercontact.DialerContact;
 import com.android.dialer.enrichedcall.EnrichedCallComponent;
@@ -536,16 +537,16 @@ public final class NewSearchFragment extends Fragment
   }
 
   @Override
-  public void placeVoiceCall(String phoneNumber, int ranking) {
-    placeCall(phoneNumber, ranking, false);
+  public void placeVoiceCall(String phoneNumber, String lookupKey, int ranking) {
+    placeCall(phoneNumber, lookupKey, ranking, false);
   }
 
   @Override
   public void placeVideoCall(String phoneNumber, int ranking) {
-    placeCall(phoneNumber, ranking, true);
+    placeCall(phoneNumber, null, ranking, true);
   }
 
-  private void placeCall(String phoneNumber, int position, boolean isVideoCall) {
+  private void placeCall(String phoneNumber, String lookupKey, int position, boolean isVideoCall) {
     CallSpecificAppData callSpecificAppData =
         CallSpecificAppData.newBuilder()
             .setCallInitiationType(callInitiationType)
@@ -553,11 +554,15 @@ public final class NewSearchFragment extends Fragment
             .setCharactersInSearchString(query == null ? 0 : query.length())
             .setAllowAssistedDialing(true)
             .build();
-    PreCall.start(
-        getContext(),
+    CallIntentBuilder callIntentBuilder = (
         new CallIntentBuilder(phoneNumber, callSpecificAppData)
             .setIsVideoCall(isVideoCall)
             .setAllowAssistedDial(true));
+    if (lookupKey == null) {
+      PreCall.start(getContext(), callIntentBuilder);
+    } else {
+      PreCall.start(getActivity(), phoneNumber, callIntentBuilder, lookupKey);
+    }
     FragmentUtils.getParentUnsafe(this, SearchFragmentListener.class).onCallPlacedFromSearch();
   }
 

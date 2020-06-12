@@ -74,6 +74,7 @@ public final class SearchContactViewHolder extends ViewHolder implements OnClick
 
   private int position;
   private String number;
+  private String lookupKey;
   private DialerContact dialerContact;
   private @CallToAction int currentAction;
 
@@ -96,6 +97,7 @@ public final class SearchContactViewHolder extends ViewHolder implements OnClick
     dialerContact = getDialerContact(context, cursor);
     position = cursor.getPosition();
     number = cursor.getString(Projections.PHONE_NUMBER);
+    lookupKey = cursor.getString(Projections.LOOKUP_KEY);
     String name = cursor.getString(Projections.DISPLAY_NAME);
     String label = getLabel(context.getResources(), cursor);
     String secondaryInfo =
@@ -262,7 +264,7 @@ public final class SearchContactViewHolder extends ViewHolder implements OnClick
               "Invalid Call to action type: " + currentAction);
       }
     } else {
-      listener.placeVoiceCall(number, position);
+      listener.placeVoiceCall(number, lookupKey, position);
     }
   }
 
