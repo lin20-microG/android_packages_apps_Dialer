@@ -24,4 +24,6 @@
   <string name="call_account_unavailable">Unavailable for this number</string>
   <string name="call_account_offline">No internet connection</string>
   <string name="call_account_not_installed">Not installed - Tap to install</string>
+
+  <string name="incall_screen_privacy_data_collection">The location and audio of this call are not private.</string>
 </resources>
