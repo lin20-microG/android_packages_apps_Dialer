@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Tämän puhelun sijainti ja ääni eivät ole yksityisiä.</string>
+    <string name="call_account_not_installed">Ei asennettu - Napauta asentaaksesi</string>
+    <string name="call_account_offline">Ei verkkoyhteyttä</string>
+    <string name="call_account_unavailable">Ei saatavilla tälle numerolle</string>
+    <string name="call_account_not_private">Audio ei ole yksityistä</string>
+    <string name="call_account_private">Audio ja video on yksityistä</string>
+    <string name="call_account_unknown">Tuntematon</string>
+    <string name="call_account_choose_title">Valitse tälle puhelulle palveluntarjoaja</string>
+    <string name="show_accounts_selection_dialog">Näytä puhelun tarjoajan valintanäkymä</string>
+</resources>

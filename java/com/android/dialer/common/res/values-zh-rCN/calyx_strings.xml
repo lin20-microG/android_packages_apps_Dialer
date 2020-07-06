@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">此通话的位置与音频不是私人的。</string>
+    <string name="call_account_not_installed">未安装 - 点击以安装</string>
+    <string name="call_account_offline">无网络连接</string>
+    <string name="call_account_unavailable">对此号码不可用</string>
+    <string name="call_account_not_private">非私人音频</string>
+    <string name="call_account_private">私人音频和视频</string>
+    <string name="call_account_unknown">未知</string>
+    <string name="call_account_choose_title">选择来电供应商</string>
+    <string name="show_accounts_selection_dialog">显示呼叫提供者选择对话框</string>
+</resources>

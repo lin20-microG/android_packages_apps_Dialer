@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Lokalizacja i audio tej rozmowy nie są prywatne.</string>
+    <string name="call_account_not_installed">Nie zainstalowano — dotknij, aby zainstalować</string>
+    <string name="call_account_offline">Brak połączenia z internetem</string>
+    <string name="call_account_unavailable">Niedostępne dla tego numeru</string>
+    <string name="call_account_unknown">NIeznany</string>
+    <string name="call_account_choose_title">Wybierz dostawcę dla tego połączenia</string>
+    <string name="call_account_not_private">Audio nie jest prywatne</string>
+    <string name="call_account_private">Audio i wideo połączenia są prywatne</string>
+    <string name="show_accounts_selection_dialog">Pokaż okno wyboru dostawcy połączeń</string>
+</resources>

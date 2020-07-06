@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_unavailable">ഈ നമ്പറിന് ലഭ്യമല്ല</string>
+    <string name="call_account_not_private">ഓഡിയോ സ്വകാര്യമല്ല</string>
+    <string name="call_account_not_installed">സ്ഥാപിച്ചിട്ടില്ല - സ്ഥാപിക്കാൻ ടാപ്പ് ചെയ്യുക</string>
+    <string name="incall_screen_privacy_data_collection">ഈ കോളിന്റെ ലൊക്കേഷനും ഓഡിയോയും സ്വകാര്യമല്ല.</string>
+    <string name="call_account_offline">ഇന്റർനെറ്റ് കണക്ഷൻ ഇല്ല</string>
+    <string name="call_account_private">ഓഡിയോയും വീഡിയോയും സ്വകാര്യമാണ്</string>
+    <string name="call_account_choose_title">ഈ വിളിക്കായി ഒരു ദാതാവിനെ തിരഞ്ഞെടുക്കുക</string>
+    <string name="call_account_unknown">അജ്ഞാതം</string>
+    <string name="show_accounts_selection_dialog">കോൾ ദാതാവിന്റെ തിരഞ്ഞെടുക്കൽ ഡയലോഗ് കാണിക്കുക</string>
+</resources>

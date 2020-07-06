@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_not_installed">Не встановлено - натисніть для встановлення</string>
+    <string name="call_account_not_private">Аудіо потік не є приватним</string>
+    <string name="call_account_unavailable">Недоступно для цього номера</string>
+    <string name="call_account_offline">Відсутнє інтернет-з\'єднання</string>
+    <string name="call_account_private">Аудіо та відео потоки є приватними</string>
+    <string name="call_account_choose_title">Виберіть обліковий запис для цього дзвінка</string>
+    <string name="call_account_unknown">Невідомий</string>
+    <string name="show_accounts_selection_dialog">Показати діалогове вікно вибору постачальника дзвінків</string>
+    <string name="incall_screen_privacy_data_collection">Місцеперебування та аудіо потік цього дзвінка не є приватними.</string>
+</resources>

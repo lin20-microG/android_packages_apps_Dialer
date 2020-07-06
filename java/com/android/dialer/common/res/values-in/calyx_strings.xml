@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Lokasi dan suara dari panggilan adalah tidak privasi</string>
+    <string name="call_account_not_installed">Belum terinstall - tekan untuk menginstall</string>
+    <string name="call_account_offline">Tidak ada internet koneksi</string>
+    <string name="call_account_unavailable">Tidak tersedia untuk nomor ini</string>
+    <string name="call_account_not_private">suara tidak privat</string>
+    <string name="call_account_private">Suara dan Video adalah privat</string>
+    <string name="call_account_unknown">Tidak diketahui</string>
+    <string name="call_account_choose_title">Pilih provider untuk panggilan ini</string>
+    <string name="show_accounts_selection_dialog">Tampilkan dialog pemilihan penyedia panggilan</string>
+</resources>

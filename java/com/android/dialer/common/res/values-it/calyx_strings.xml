@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_not_installed">Non installato - Tocca per installare</string>
+    <string name="call_account_offline">Nessuna connessione internet</string>
+    <string name="call_account_unavailable">Non disponibile per questo numero</string>
+    <string name="call_account_not_private">L\'audio non è privato</string>
+    <string name="call_account_private">L\'audio e il video sono privati</string>
+    <string name="incall_screen_privacy_data_collection">La geolocalizzazione e l\'audio di questa telefonata non sono private.</string>
+    <string name="call_account_unknown">Sconosciuto</string>
+    <string name="call_account_choose_title">Selezionare un operatore per questa chiamata</string>
+    <string name="show_accounts_selection_dialog">Mostra finestra di dialogo per la selezione del provider di chiamate</string>
+</resources>

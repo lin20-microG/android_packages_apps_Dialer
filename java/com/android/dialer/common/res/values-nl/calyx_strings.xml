@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="show_accounts_selection_dialog">Dialoogvenster voor selectie van oproepaanbieder weergeven</string>
+    <string name="incall_screen_privacy_data_collection">De locatie en audio van dit gesprek zijn niet privé.</string>
+    <string name="call_account_not_installed">Niet geïnstalleerd - Klik om te installeren</string>
+    <string name="call_account_offline">Geen internetverbinding</string>
+    <string name="call_account_unavailable">Onbeschikbaar voor dit nummer</string>
+    <string name="call_account_not_private">Audio is niet privé</string>
+    <string name="call_account_private">Audio en video zijn versleuteld</string>
+    <string name="call_account_unknown">Onbekend</string>
+    <string name="call_account_choose_title">Kies een provider voor dit gesprek</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_private">L\'àudio i el vídeo són privats</string>
+    <string name="call_account_not_private">L\'àudio no és privat</string>
+    <string name="call_account_unavailable">No disponible per aquest número</string>
+    <string name="call_account_offline">Sense conexió a internet</string>
+    <string name="incall_screen_privacy_data_collection">La ubicació i l\'àudio d\'aquesta trucada no són privats.</string>
+    <string name="call_account_choose_title">Tria un proveïdor per a aquesta trucada</string>
+    <string name="call_account_unknown">Desconegut</string>
+    <string name="call_account_not_installed">No instal·lat - Fes un toc per instal·lar</string>
+    <string name="show_accounts_selection_dialog">Mostra el diàleg de selecció del proveïdor de trucades</string>
+</resources>

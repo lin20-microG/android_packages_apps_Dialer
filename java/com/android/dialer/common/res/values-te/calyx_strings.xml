@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">ఈ కాల్ యొక్క ఆడియో మరియు లొకేషన్ వ్యక్తిగతం కాదు</string>
+    <string name="call_account_not_installed">ఇంస్టాల్ చేయలేదు - ఇంస్టాల్ చేయుటకు టాప్ చేయండి</string>
+    <string name="call_account_offline">అంతర్జాల సదుపాయము లేదు</string>
+    <string name="call_account_unavailable">ఈ నెంబరుకు అందుబాటు లేదు</string>
+    <string name="call_account_not_private">ఆడియో వ్యక్తిగతం కాదు</string>
+    <string name="call_account_private">ఆడియో మరియు వీడియో వ్యక్తిగతం</string>
+    <string name="call_account_unknown">అపరిచిత</string>
+    <string name="call_account_choose_title">ఈ కాల్ కొరకు ప్రొవైడర్ ను ఎంచుకోండి</string>
+</resources>

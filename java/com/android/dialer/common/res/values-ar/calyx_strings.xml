@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_choose_title">اختر مزود لهذه المكالمة</string>
+    <string name="incall_screen_privacy_data_collection">الموقع و الصوت لهذة المكالمة ليسا خاصين.</string>
+    <string name="call_account_not_installed">غير مُثبت - إضغط هنا للتثبيت</string>
+    <string name="call_account_offline">لا يوجد إتصال بالانترنت</string>
+    <string name="call_account_unavailable">غير متاح لهذا الرقم</string>
+    <string name="call_account_not_private">الصوت عام</string>
+    <string name="call_account_private">الصوت و الفيديو خاص</string>
+    <string name="call_account_unknown">مجهول</string>
+</resources>

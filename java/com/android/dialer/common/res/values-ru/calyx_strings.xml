@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Местоположение и аудио поток этого звонка не являются приватными.</string>
+    <string name="call_account_not_installed">Не установлено - нажмите для установки</string>
+    <string name="call_account_offline">Отсутствует интернет соединение</string>
+    <string name="call_account_unavailable">Недоступно для этого номера</string>
+    <string name="call_account_not_private">Аудио поток не является приватным</string>
+    <string name="call_account_private">Аудио и видео потоки являются приватными</string>
+    <string name="call_account_unknown">Неизвестный</string>
+    <string name="call_account_choose_title">Выберите аккаунт для этого звонка</string>
+    <string name="show_accounts_selection_dialog">Показать диалоговое окно выбора поставщика услуг звонков</string>
+</resources>

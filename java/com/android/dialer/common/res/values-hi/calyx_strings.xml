@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_not_private">ऑडियो निजी नहीं है</string>
+    <string name="call_account_private">ऑडियो और वीडियो निजी हैं</string>
+</resources>

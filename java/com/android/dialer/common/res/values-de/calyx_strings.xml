@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Der Ort und der Ton des Anrufs sind nicht privat.</string>
+    <string name="call_account_not_installed">Nicht installiert - Tippen zum installieren</string>
+    <string name="call_account_offline">Keine Internetverbindung</string>
+    <string name="call_account_unavailable">Für diese Nummer nicht verfügbar</string>
+    <string name="call_account_not_private">Ton ist nicht privat</string>
+    <string name="call_account_private">Ton und Video sind privat</string>
+    <string name="call_account_unknown">Unbekannt</string>
+    <string name="call_account_choose_title">Wähle eine Anrufmethode</string>
+    <string name="show_accounts_selection_dialog">Dialog zur Auswahl des Anrufanbieters anzeigen</string>
+</resources>

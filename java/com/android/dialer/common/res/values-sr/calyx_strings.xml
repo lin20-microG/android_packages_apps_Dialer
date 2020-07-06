@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Место и звук овог позива нису лични.</string>
+    <string name="call_account_not_installed">Није инсталиран – Лупните да инсталирате</string>
+    <string name="call_account_offline">Нема везе са Интернетом</string>
+    <string name="call_account_unavailable">Недоступно за овај број</string>
+    <string name="call_account_not_private">Звук није лични</string>
+    <string name="call_account_private">Звук и видео су лични</string>
+    <string name="call_account_unknown">Непознато</string>
+    <string name="call_account_choose_title">Изаберите достављача за овај позив</string>
+</resources>

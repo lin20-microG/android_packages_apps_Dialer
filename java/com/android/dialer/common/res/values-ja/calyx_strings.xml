@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="show_accounts_selection_dialog">通話のプロバイダー選択ダイアログを表示</string>
+    <string name="call_account_choose_title">この通話で使うプロバイダーを選択してください</string>
+    <string name="incall_screen_privacy_data_collection">位置情報とこの通話の音声はプライベートではありません。</string>
+    <string name="call_account_not_installed">まだインストールされていません - タップしてインストールします</string>
+    <string name="call_account_offline">インターネット接続なし</string>
+    <string name="call_account_unavailable">この電話番号では利用できません</string>
+    <string name="call_account_not_private">音声通話は暗号化されません</string>
+    <string name="call_account_private">音声通話とビデオ通話は暗号化されます</string>
+    <string name="call_account_unknown">不明</string>
+</resources>

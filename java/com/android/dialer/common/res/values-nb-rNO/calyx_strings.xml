@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Plassering og lyd for denne samtalen er ikke privat.</string>
+    <string name="call_account_not_installed">Ikke installert. Trykk for å installere</string>
+    <string name="call_account_offline">Ingen internettilknytning</string>
+    <string name="call_account_unavailable">Utilgjengelig for dette nummeret</string>
+    <string name="call_account_not_private">Lyd er ikke privat</string>
+    <string name="call_account_private">Lyd og video er privat</string>
+    <string name="call_account_unknown">Ukjent</string>
+    <string name="call_account_choose_title">Velg en tilbyder for denne samtalen</string>
+    <string name="show_accounts_selection_dialog">Vis utvelgelsesdialog for anropstilbyder</string>
+</resources>

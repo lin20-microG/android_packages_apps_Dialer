@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">המיקום והשמע של השיחה הזו אינם פרטיים.</string>
+    <string name="call_account_not_installed">לא מותקן - יש לגעת כדי להתקין</string>
+    <string name="call_account_offline">אין חיבור לאינטרנט</string>
+    <string name="call_account_unavailable">לא זמין עבור המספר הזה</string>
+    <string name="call_account_not_private">השמע אינו פרטי</string>
+    <string name="call_account_private">השמע והווידאו פרטיים</string>
+    <string name="call_account_unknown">לא ידוע</string>
+    <string name="call_account_choose_title">נא לבחור ספק לשיחה הזאת</string>
+    <string name="show_accounts_selection_dialog">הצגת חלונית בחירת ספק שיחה</string>
+</resources>

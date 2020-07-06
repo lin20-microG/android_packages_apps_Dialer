@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Vị trí và âm thanh của cuộc gọi này không phải là riêng tư.</string>
+    <string name="call_account_unknown">Không rõ</string>
+    <string name="call_account_unavailable">Không có sẵn cho số này</string>
+    <string name="call_account_not_private">Âm thanh không phải là riêng tư</string>
+    <string name="show_accounts_selection_dialog">Hiện hộp thoại chọn nhà cung cấp cuộc gọi</string>
+    <string name="call_account_choose_title">Chọn nhà cung cấp cho cuộc gọi này</string>
+    <string name="call_account_private">Âm thanh và video là riêng tư</string>
+    <string name="call_account_not_installed">Chưa cài đặt - Nhấn để cài đặt</string>
+    <string name="call_account_offline">Không có kết nối internet</string>
+</resources>

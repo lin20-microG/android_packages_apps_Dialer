@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_offline">Nėra interneto ryšio</string>
+    <string name="call_account_unknown">Nežinomas</string>
+    <string name="call_account_not_private">Garsas nėra privatus</string>
+    <string name="incall_screen_privacy_data_collection">Šio skambučio vieta ir garsas nėra privatūs.</string>
+    <string name="call_account_private">Garsas ir vaizdas yra privatūs</string>
+    <string name="call_account_not_installed">Neįdiegta - palieskite, kad įdiegtumėte</string>
+    <string name="call_account_unavailable">Šiam numeriui nepasiekiama</string>
+    <string name="show_accounts_selection_dialog">Rodyti skambučių teikėjo pasirinkimo dialogo langą</string>
+    <string name="call_account_choose_title">Pasirinkite šio skambučio teikėją</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Η τοποθεσία και ο ήχος αυτής της κλήσης δεν είναι ιδιωτικές.</string>
+    <string name="call_account_not_installed">Δεν έχει εγκατασταθεί - Πατήστε για εγκατάσταση</string>
+    <string name="call_account_offline">Δεν υπάρχει σύνδεση στο διαδίκτυο</string>
+    <string name="call_account_unavailable">Μη διαθέσιμο για αυτόν τον αριθμό</string>
+    <string name="call_account_not_private">Ο ήχος δεν είναι ιδιωτικός</string>
+    <string name="call_account_private">Ο ήχος και το βίντεο είναι ιδιωτικά</string>
+    <string name="call_account_unknown">Άγνωστος</string>
+    <string name="call_account_choose_title">Επιλέξτε έναν πάροχο για αυτήν την κλήση</string>
+    <string name="show_accounts_selection_dialog">Εμφάνιση διαλόγου επιλογής παρόχου κλήσεων</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="incall_screen_privacy_data_collection">Lokacija i audio ovog poziva nisu privatni.</string>
+    <string name="call_account_not_installed">Nije instalirano – dodirni za instaliranje</string>
+    <string name="call_account_offline">Nema internetske veze</string>
+    <string name="call_account_unavailable">Nedostupno za ovaj broj</string>
+    <string name="call_account_not_private">Audio nije privatan</string>
+    <string name="call_account_private">Audio i videozapisi su privatni</string>
+    <string name="call_account_unknown">Nepoznato</string>
+    <string name="call_account_choose_title">Odaberi pružatelja usluge za ovaj poziv</string>
+    <string name="show_accounts_selection_dialog">Prikaži dijaloški okvir za biranje davatelja poziva</string>
+</resources>

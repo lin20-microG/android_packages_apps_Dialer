@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_offline">Ingen Internet anslutning</string>
+    <string name="call_account_not_private">Ljud är inte privat</string>
+    <string name="call_account_private">Ljud och video är privat</string>
+</resources>

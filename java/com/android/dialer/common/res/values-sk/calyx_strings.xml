@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_choose_title">Vybrať operátora pre tento hovor</string>
+    <string name="show_accounts_selection_dialog">Zobraziť dialógové okno výberu operátora</string>
+    <string name="incall_screen_privacy_data_collection">Lokácia a zvuk tohto hovoru nie sú súkromné.</string>
+    <string name="call_account_not_installed">Nenainštalované - kliknite pre inštaláciu</string>
+    <string name="call_account_offline">Žiadne pripojenie k internetu</string>
+    <string name="call_account_unavailable">Nedostupné pre toto číslo</string>
+    <string name="call_account_not_private">Zvuk nie je súkromný</string>
+    <string name="call_account_private">Zvuk a video sú sukromné</string>
+    <string name="call_account_unknown">Neznámy</string>
+</resources>

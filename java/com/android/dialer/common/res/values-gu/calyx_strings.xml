@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_not_private">ઓડિયો ખાનગી નથી</string>
+    <string name="call_account_private">ઓડિયો અને વિડિઓ ખાનગી છે</string>
+</resources>

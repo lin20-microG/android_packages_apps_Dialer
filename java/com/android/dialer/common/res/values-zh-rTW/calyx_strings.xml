@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_account_not_installed">未安裝 - 輕觸以安裝</string>
+    <string name="call_account_offline">無網路連線</string>
+    <string name="call_account_unknown">未知</string>
+    <string name="incall_screen_privacy_data_collection">這通話的位置和音訊都不是隱私的。</string>
+    <string name="call_account_unavailable">此號碼無法使用</string>
+    <string name="call_account_not_private">音訊不是隱私的</string>
+    <string name="call_account_private">音訊和視像是隱私的</string>
+    <string name="call_account_choose_title">選擇此通話的電信業者</string>
+</resources>
