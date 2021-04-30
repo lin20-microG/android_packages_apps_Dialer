@@ -36,4 +36,9 @@
       android:title="@string/display_options_view_names_as"
       android:defaultValue="@string/display_options_view_given_name_first_value"/>
 
+  <SwitchPreference
+      android:defaultValue="true"
+      android:key="show_accounts_selection_dialog"
+      android:title="@string/show_accounts_selection_dialog" />
+
 </PreferenceScreen>

@@ -16,8 +16,10 @@
 
 package com.android.dialer.common.accounts;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Data;
 import com.android.dialer.callintent.CallIntentBuilder;
@@ -28,6 +30,8 @@ import static android.telecom.PhoneAccount.SCHEME_SIP;
 import static android.telecom.PhoneAccount.SCHEME_TEL;
 
 public interface SpecialCallingAccounts {
+
+  String KEY_SHOW_ACCOUNTS_SELECTION_DIALOG = "show_accounts_selection_dialog";
 
   String MIME_TYPE_SIGNAL = "vnd.android.cursor.item/vnd.org.thoughtcrime.securesms.call";
   String MIME_TYPE_WHATSAPP = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
@@ -40,17 +44,22 @@ public interface SpecialCallingAccounts {
   // but we want to force-open F-Droid on CalyxOS
   Uri MARKET_URI_SIGNAL = Uri.parse("fdroid.app:org.thoughtcrime.securesms");
 
-  static boolean showDialog(String phoneNumber, @Nullable CallIntentBuilder builder) {
+  static boolean showDialog(Context context, String phoneNumber,
+      @Nullable CallIntentBuilder builder) {
+    if (!PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+            KEY_SHOW_ACCOUNTS_SELECTION_DIALOG, true)) return false;
     if (phoneNumber == null || phoneNumber.isEmpty()) return false;
-    return showDialog(builder);
+    return showDialog(context, builder);
   }
 
-  static boolean showDialog(Intent intent, @Nullable CallIntentBuilder builder) {
+  static boolean showDialog(Context context, Intent intent, @Nullable CallIntentBuilder builder) {
+    if (!PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+            KEY_SHOW_ACCOUNTS_SELECTION_DIALOG, true)) return false;
     if (Intent.ACTION_CALL.equals(intent.getAction())) return true;
-    return showDialog(builder);
+    return showDialog(context, builder);
   }
 
-  static boolean showDialog(@Nullable CallIntentBuilder builder) {
+  static boolean showDialog(Context context, @Nullable CallIntentBuilder builder) {
     if (builder == null) return false;
     if (builder.isDuoCall() || builder.isVideoCall()) return false;
     String scheme = builder.getUri().getScheme();

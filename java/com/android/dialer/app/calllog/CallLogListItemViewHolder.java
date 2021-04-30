@@ -1080,7 +1080,7 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
         Logger.get(context).logImpression(DialerImpression.Type.IMS_VIDEO_REQUESTED_FROM_CALL_LOG);
       }
       // hijack call to show chooser dialog (hopefully only for regular call backs)
-      else if (SpecialCallingAccounts.showDialog(intent, callIntentBuilder)) {
+      else if (SpecialCallingAccounts.showDialog(context, intent, callIntentBuilder)) {
         Intent phoneIntent;
         if (callIntentBuilder != null) phoneIntent = callIntentBuilder.build();
         else phoneIntent = intent;
