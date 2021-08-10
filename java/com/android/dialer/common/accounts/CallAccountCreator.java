@@ -31,6 +31,7 @@ import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import com.android.contacts.common.compat.PhoneAccountCompat;
 import com.android.dialer.common.accounts.CallAccount.Status;
+import com.android.dialer.common.PackageUtils;
 import com.android.dialer.contacts.resources.R;
 import com.android.dialer.util.CallUtil;
 
@@ -43,6 +44,8 @@ import static android.telecom.PhoneAccount.SCHEME_SIP;
 import static com.android.dialer.common.accounts.SpecialCallingAccounts.MARKET_URI_SIGNAL;
 import static com.android.dialer.common.accounts.SpecialCallingAccounts.MIME_TYPE_SIGNAL;
 import static com.android.dialer.common.accounts.SpecialCallingAccounts.MIME_TYPE_WHATSAPP;
+import static com.android.dialer.common.accounts.SpecialCallingAccounts.PACKAGE_NAME_SIGNAL;
+import static com.android.dialer.common.accounts.SpecialCallingAccounts.PACKAGE_NAME_WHATSAPP;
 
 class CallAccountCreator {
 
@@ -64,7 +67,7 @@ class CallAccountCreator {
     if (id == -1 || isOffline) {
       Status status;
       String unavailableText;
-      if (isInstalled(MIME_TYPE_SIGNAL)) {
+      if (isInstalled(PACKAGE_NAME_SIGNAL, MIME_TYPE_SIGNAL)) {
         intent = getCustomCallIntent(id, MIME_TYPE_SIGNAL);
         icon = getAppIcon(intent);
         status = Status.DISABLED;
@@ -90,7 +93,7 @@ class CallAccountCreator {
     Status status;
     String unavailableText;
     if (id == -1) {
-      if (isInstalled(MIME_TYPE_WHATSAPP)) {
+      if (isInstalled(PACKAGE_NAME_WHATSAPP, MIME_TYPE_WHATSAPP)) {
         status = Status.DISABLED;
         unavailableText = context.getString(R.string.call_account_unavailable);
       } else {
@@ -123,11 +126,14 @@ class CallAccountCreator {
         || !capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
   }
 
-  private boolean isInstalled(String mimeType) {
-    Intent i = getCustomCallIntent(0, mimeType);
-    final List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(i,
-        PackageManager.MATCH_DEFAULT_ONLY);
-    return !resolveInfos.isEmpty();
+  private boolean isInstalled(String packageName, String mimeType) {
+    if (PackageUtils.isPackageEnabled(packageName, context)) {
+      Intent i = getCustomCallIntent(0, mimeType);
+      final List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(i,
+          PackageManager.MATCH_DEFAULT_ONLY);
+      return !resolveInfos.isEmpty();
+    }
+    return false;
   }
 
   @Nullable

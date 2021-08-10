@@ -40,9 +40,12 @@ public interface SpecialCallingAccounts {
   String[] ACCOUNTS_PROJECTION = new String[]{Data._ID, Data.MIMETYPE, Data.DATA1};
   String ACCOUNTS_SELECTION = Data.LOOKUP_KEY + " = ? AND " + Data.MIMETYPE + " in (?, ?)";
 
+  String PACKAGE_NAME_SIGNAL = "org.thoughtcrime.securesms";
+  String PACKAGE_NAME_WHATSAPP = "com.whatsapp";
+
   // normally this is "market://details?id=org.thoughtcrime.securesms"
   // but we want to force-open F-Droid on CalyxOS
-  Uri MARKET_URI_SIGNAL = Uri.parse("fdroid.app:org.thoughtcrime.securesms");
+  Uri MARKET_URI_SIGNAL = Uri.parse("fdroid.app:" + PACKAGE_NAME_SIGNAL);
 
   static boolean showDialog(Context context, String phoneNumber,
       @Nullable CallIntentBuilder builder) {
