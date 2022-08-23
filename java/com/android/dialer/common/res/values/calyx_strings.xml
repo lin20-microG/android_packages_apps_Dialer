@@ -25,6 +25,8 @@
   <string name="call_account_offline">No internet connection</string>
   <string name="call_account_not_installed">Not installed - Tap to install</string>
 
+  <string name="dialer_search_action">Open in %s</string>
+
   <string name="incall_screen_privacy_data_collection">The location and audio of this call are not private.</string>
 
   <string name="show_accounts_selection_dialog">Show call provider selection dialog</string>

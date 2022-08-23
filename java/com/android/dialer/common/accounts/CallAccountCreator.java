@@ -19,19 +19,16 @@ package com.android.dialer.common.accounts;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.Uri;
-import android.provider.ContactsContract.Data;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import com.android.contacts.common.compat.PhoneAccountCompat;
 import com.android.dialer.common.accounts.CallAccount.Status;
-import com.android.dialer.common.PackageUtils;
 import com.android.dialer.contacts.resources.R;
 import com.android.dialer.util.CallUtil;
 
@@ -41,11 +38,13 @@ import java.util.List;
 
 import static android.content.Intent.ACTION_VIEW;
 import static android.telecom.PhoneAccount.SCHEME_SIP;
+
+import static com.android.dialer.common.accounts.CallAccountUtils.getCustomCallIntent;
+import static com.android.dialer.common.accounts.CallAccountUtils.isSignalInstalled;
+import static com.android.dialer.common.accounts.CallAccountUtils.isWhatsAppInstalled;
 import static com.android.dialer.common.accounts.SpecialCallingAccounts.MARKET_URI_SIGNAL;
 import static com.android.dialer.common.accounts.SpecialCallingAccounts.MIME_TYPE_SIGNAL;
 import static com.android.dialer.common.accounts.SpecialCallingAccounts.MIME_TYPE_WHATSAPP;
-import static com.android.dialer.common.accounts.SpecialCallingAccounts.PACKAGE_NAME_SIGNAL;
-import static com.android.dialer.common.accounts.SpecialCallingAccounts.PACKAGE_NAME_WHATSAPP;
 
 class CallAccountCreator {
 
@@ -67,7 +66,7 @@ class CallAccountCreator {
     if (id == -1 || isOffline) {
       Status status;
       String unavailableText;
-      if (isInstalled(PACKAGE_NAME_SIGNAL, MIME_TYPE_SIGNAL)) {
+      if (isSignalInstalled(context)) {
         intent = getCustomCallIntent(id, MIME_TYPE_SIGNAL);
         icon = getAppIcon(intent);
         status = Status.DISABLED;
@@ -93,7 +92,7 @@ class CallAccountCreator {
     Status status;
     String unavailableText;
     if (id == -1) {
-      if (isInstalled(PACKAGE_NAME_WHATSAPP, MIME_TYPE_WHATSAPP)) {
+      if (isWhatsAppInstalled(context)) {
         status = Status.DISABLED;
         unavailableText = context.getString(R.string.call_account_unavailable);
       } else {
@@ -112,13 +111,6 @@ class CallAccountCreator {
     return new CallAccount(intent, name, getAppIcon(intent), true, status, unavailableText);
   }
 
-  private Intent getCustomCallIntent(long id, String mimeType) {
-    Intent intent = new Intent(ACTION_VIEW);
-    final Uri uri = android.content.ContentUris.withAppendedId(Data.CONTENT_URI, id);
-    intent.setDataAndType(uri, mimeType);
-    return intent;
-  }
-
   private boolean isOffline() {
     ConnectivityManager cm = context.getSystemService(ConnectivityManager.class);
     NetworkCapabilities capabilities = cm.getNetworkCapabilities(cm.getActiveNetwork());
@@ -126,24 +118,9 @@ class CallAccountCreator {
         || !capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
   }
 
-  private boolean isInstalled(String packageName, String mimeType) {
-    if (PackageUtils.isPackageEnabled(packageName, context)) {
-      Intent i = getCustomCallIntent(0, mimeType);
-      final List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(i,
-          PackageManager.MATCH_DEFAULT_ONLY);
-      return !resolveInfos.isEmpty();
-    }
-    return false;
-  }
-
   @Nullable
   private Drawable getAppIcon(Intent i) {
-    final List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(i,
-        PackageManager.MATCH_DEFAULT_ONLY);
-    if (resolveInfos.isEmpty()) return null;
-    ResolveInfo match = resolveInfos.get(0);
-    if (match != null) return match.loadIcon(packageManager);
-    return null;
+    return CallAccountUtils.getAppIcon(packageManager, i);
   }
 
   List<CallAccount> getPhoneAccounts(Intent phoneIntent, @Nullable String number) {
