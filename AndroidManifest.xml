@@ -126,4 +126,9 @@
     android:requestLegacyExternalStorage="true">
   </application>
 
+  <queries>
+    <package android:name="org.thoughtcrime.securesms"/>
+    <package android:name="com.whatsapp"/>
+  </queries>
+
 </manifest>
