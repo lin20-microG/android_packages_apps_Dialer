@@ -9,4 +9,5 @@
     <string name="call_account_not_installed">설치되지 않음 - 탭 하여 설치</string>
     <string name="incall_screen_privacy_data_collection">이 전화의 오디오와 위치는 비공개 상태가 아닙니다.</string>
     <string name="show_accounts_selection_dialog">발신 제공자 선택 창 보기</string>
+    <string name="dialer_search_action">%s에서 열기</string>
 </resources>

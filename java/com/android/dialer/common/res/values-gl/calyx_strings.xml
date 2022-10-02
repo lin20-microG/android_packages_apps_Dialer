@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="call_account_offline">Sen conexión a internet</string>
+    <string name="call_account_choose_title">Escolla un provedor para esta chamada</string>
+    <string name="call_account_unknown">Descoñecido</string>
+    <string name="call_account_private">O audio e o vídeo son privados</string>
+    <string name="call_account_not_private">O audio non é privado</string>
+    <string name="call_account_not_installed">Non instalado: prema para instalar</string>
+    <string name="show_accounts_selection_dialog">Mostralo diálogo de selección do provedor de chamadas</string>
+    <string name="call_account_unavailable">Non dispoñible para este número</string>
+    <string name="incall_screen_privacy_data_collection">A localización e o audio dista chamada non son privados.</string>
+    <string name="dialer_search_action">Abrir en %s</string>
+</resources>

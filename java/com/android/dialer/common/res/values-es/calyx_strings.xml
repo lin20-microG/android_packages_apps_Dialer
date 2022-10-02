@@ -9,4 +9,5 @@
     <string name="call_account_not_private">El audio no es privado</string>
     <string name="call_account_private">El audio y el video son privados</string>
     <string name="show_accounts_selection_dialog">Mostrar el diálogo de selección del proveedor de llamadas</string>
+    <string name="dialer_search_action">Abrir en %s</string>
 </resources>

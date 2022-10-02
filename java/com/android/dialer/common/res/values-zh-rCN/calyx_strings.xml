@@ -9,4 +9,5 @@
     <string name="call_account_unknown">未知</string>
     <string name="call_account_choose_title">选择来电供应商</string>
     <string name="show_accounts_selection_dialog">显示呼叫提供者选择对话框</string>
+    <string name="dialer_search_action">在 %s 中打开</string>
 </resources>

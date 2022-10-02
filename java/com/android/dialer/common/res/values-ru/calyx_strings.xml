@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Неизвестный</string>
     <string name="call_account_choose_title">Выберите аккаунт для этого звонка</string>
     <string name="show_accounts_selection_dialog">Показать диалоговое окно выбора поставщика услуг звонков</string>
+    <string name="dialer_search_action">Открыть в %s</string>
 </resources>

@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Bilinmeyen</string>
     <string name="call_account_choose_title">Bu arama için bir sağlayıcı seçin</string>
     <string name="show_accounts_selection_dialog">Arama sağlayıcısı seçim kutucuğunu göster</string>
+    <string name="dialer_search_action">%s\'de aç</string>
 </resources>

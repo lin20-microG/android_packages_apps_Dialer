@@ -9,4 +9,5 @@
     <string name="call_account_unknown">לא ידוע</string>
     <string name="call_account_choose_title">נא לבחור ספק לשיחה הזאת</string>
     <string name="show_accounts_selection_dialog">הצגת חלונית בחירת ספק שיחה</string>
+    <string name="dialer_search_action">פתיחה עם %s</string>
 </resources>
