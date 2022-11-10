@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Desconegut</string>
     <string name="call_account_not_installed">No instal·lat - Fes un toc per instal·lar</string>
     <string name="show_accounts_selection_dialog">Mostra el diàleg de selecció del proveïdor de trucades</string>
+    <string name="dialer_search_action">Obre a %s</string>
 </resources>

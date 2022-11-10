@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Neznámý</string>
     <string name="call_account_choose_title">Vyberte poskytovatele hovoru</string>
     <string name="show_accounts_selection_dialog">Zobrazit dialogové okno pro výběr poskytovatele volání</string>
+    <string name="dialer_search_action">Otevřít v %s</string>
 </resources>

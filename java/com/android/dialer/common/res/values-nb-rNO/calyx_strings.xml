@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Ukjent</string>
     <string name="call_account_choose_title">Velg en tilbyder for denne samtalen</string>
     <string name="show_accounts_selection_dialog">Vis utvelgelsesdialog for anropstilbyder</string>
+    <string name="dialer_search_action">Åpne i %s</string>
 </resources>

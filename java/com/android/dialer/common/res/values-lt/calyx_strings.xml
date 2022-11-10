@@ -9,4 +9,5 @@
     <string name="call_account_unavailable">Šiam numeriui nepasiekiama</string>
     <string name="show_accounts_selection_dialog">Rodyti skambučių teikėjo pasirinkimo dialogo langą</string>
     <string name="call_account_choose_title">Pasirinkite šio skambučio teikėją</string>
+    <string name="dialer_search_action">Atidaryti naudojant %s</string>
 </resources>

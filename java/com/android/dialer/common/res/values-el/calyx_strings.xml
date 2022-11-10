@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Άγνωστος</string>
     <string name="call_account_choose_title">Επιλέξτε έναν πάροχο για αυτήν την κλήση</string>
     <string name="show_accounts_selection_dialog">Εμφάνιση διαλόγου επιλογής παρόχου κλήσεων</string>
+    <string name="dialer_search_action">Άνοιγμα στο %s</string>
 </resources>
