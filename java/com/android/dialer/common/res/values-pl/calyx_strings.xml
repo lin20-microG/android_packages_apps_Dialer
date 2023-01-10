@@ -9,4 +9,5 @@
     <string name="call_account_not_private">Audio nie jest prywatne</string>
     <string name="call_account_private">Audio i wideo połączenia są prywatne</string>
     <string name="show_accounts_selection_dialog">Pokaż okno wyboru dostawcy połączeń</string>
+    <string name="dialer_search_action">Otwórz za pomocą %s</string>
 </resources>

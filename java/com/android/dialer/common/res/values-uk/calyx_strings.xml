@@ -7,6 +7,7 @@
     <string name="call_account_private">Аудіо та відео потоки є приватними</string>
     <string name="call_account_choose_title">Виберіть обліковий запис для цього дзвінка</string>
     <string name="call_account_unknown">Невідомий</string>
-    <string name="show_accounts_selection_dialog">Показати діалогове вікно вибору постачальника дзвінків</string>
-    <string name="incall_screen_privacy_data_collection">Місцеперебування та аудіо потік цього дзвінка не є приватними.</string>
+    <string name="show_accounts_selection_dialog">Показати діалогове вікно вибору оператора дзвінків</string>
+    <string name="incall_screen_privacy_data_collection">Місцезнаходження та аудіозапис цього дзвінка не є приватними.</string>
+    <string name="dialer_search_action">Відкрити в %s</string>
 </resources>
