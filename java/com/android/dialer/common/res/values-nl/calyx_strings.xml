@@ -9,4 +9,5 @@
     <string name="call_account_private">Audio en video zijn versleuteld</string>
     <string name="call_account_unknown">Onbekend</string>
     <string name="call_account_choose_title">Kies een provider voor dit gesprek</string>
+    <string name="dialer_search_action">Open in %s</string>
 </resources>

@@ -3,4 +3,11 @@
     <string name="call_account_offline">Ingen Internet anslutning</string>
     <string name="call_account_not_private">Ljud är inte privat</string>
     <string name="call_account_private">Ljud och video är privat</string>
+    <string name="call_account_choose_title">Välj en leverantör för detta samtal</string>
+    <string name="call_account_unknown">Okänd</string>
+    <string name="call_account_unavailable">Otillgängligt för detta nummer</string>
+    <string name="call_account_not_installed">Inte installerad - Tryck för att installera</string>
+    <string name="dialer_search_action">Öppna med %s</string>
+    <string name="incall_screen_privacy_data_collection">Platsen och ljud för detta samtal är inte privat.</string>
+    <string name="show_accounts_selection_dialog">Visa dialog för att välja samtalets leverantör</string>
 </resources>
