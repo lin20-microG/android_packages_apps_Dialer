@@ -9,4 +9,5 @@
     <string name="call_account_unknown">Nepoznato</string>
     <string name="call_account_choose_title">Odaberi pružatelja usluge za ovaj poziv</string>
     <string name="show_accounts_selection_dialog">Prikaži dijaloški okvir za biranje davatelja poziva</string>
+    <string name="dialer_search_action">Otvori u %s</string>
 </resources>

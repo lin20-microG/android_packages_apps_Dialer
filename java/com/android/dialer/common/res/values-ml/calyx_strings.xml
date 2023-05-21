@@ -9,4 +9,5 @@
     <string name="call_account_choose_title">ഈ വിളിക്കായി ഒരു ദാതാവിനെ തിരഞ്ഞെടുക്കുക</string>
     <string name="call_account_unknown">അജ്ഞാതം</string>
     <string name="show_accounts_selection_dialog">കോൾ ദാതാവിന്റെ തിരഞ്ഞെടുക്കൽ ഡയലോഗ് കാണിക്കുക</string>
+    <string name="dialer_search_action">%s-ൽ തുറക്കുക</string>
 </resources>
